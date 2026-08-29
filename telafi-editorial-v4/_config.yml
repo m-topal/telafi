@@ -1,0 +1,28 @@
+title: "telâfi"
+description: "İhmal edilmiş ne varsa."
+url: "https://telafi.org"
+baseurl: ""
+lang: "tr"
+timezone: "America/Phoenix"
+markdown: kramdown
+
+collections:
+  yazilar:
+    output: true
+    permalink: /yazi/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "yazilar"
+    values:
+      layout: "post"
+      author: "Telafi"
+      category: "Yazı"
+      reading_time: "6 dk"
+      featured: false
+
+exclude:
+  - _posts
+  - README.md
+  - YAZI-EKLEME.md

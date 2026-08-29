@@ -1,0 +1,13 @@
+<article class="story">
+  {% if include.item.image %}
+  <a class="story__image" href="{{ include.item.url | relative_url }}">
+    <img src="{{ include.item.image | relative_url }}" alt="{{ include.item.image_alt | default: '' }}">
+  </a>
+  {% endif %}
+  <p class="kicker">{{ include.item.category }}</p>
+  <h3><a href="{{ include.item.url | relative_url }}">{{ include.item.title }}</a></h3>
+  {% if include.item.excerpt_text %}
+    <p class="story__excerpt">{{ include.item.excerpt_text }}</p>
+  {% endif %}
+  <p class="meta">Yazan {{ include.item.author }}{% if include.item.reading_time %} · {{ include.item.reading_time }}{% endif %}</p>
+</article>

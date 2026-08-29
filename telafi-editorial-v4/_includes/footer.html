@@ -1,0 +1,25 @@
+<footer class="site-footer">
+  <div class="shell footer-main">
+    <div class="footer-brand">
+      <div class="footer-logo">telâfi<span>.org</span></div>
+      <p>İhmal edilmiş ne varsa.</p>
+    </div>
+
+    <div class="footer-col">
+      <h2>Okuyun</h2>
+      <a href="{{ '/yazilar/' | relative_url }}">Yazılar</a>
+      <a href="{{ '/dosyalar/' | relative_url }}">Dosyalar</a>
+      <a href="{{ '/arsiv/' | relative_url }}">Arşiv</a>
+    </div>
+
+    <div class="footer-col">
+      <h2>Telafi</h2>
+      <a href="{{ '/hakkinda/' | relative_url }}">Hakkında</a>
+      <a href="{{ '/iletisim/' | relative_url }}">İletişim</a>
+    </div>
+  </div>
+  <div class="shell footer-bottom">
+    <span>© {{ 'now' | date: "%Y" }} Telafi</span>
+    <span>Bağımsız fikir yayını</span>
+  </div>
+</footer>
