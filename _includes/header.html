@@ -1,28 +1,29 @@
 <header class="site-header">
-  <div class="utility">
-    <div class="shell utility__inner">
+  <div class="utility-bar">
+    <div class="shell utility-inner">
       <span>Bağımsız fikir, tarih ve kültür yayını</span>
-      <nav class="utility__links" aria-label="Hızlı bağlantılar">
+      <div class="utility-links">
         <a href="{{ '/hakkinda/' | relative_url }}">Hakkında</a>
         <a href="{{ '/iletisim/' | relative_url }}">İletişim</a>
         <a href="{{ '/arsiv/' | relative_url }}">Arşiv</a>
-      </nav>
+      </div>
     </div>
   </div>
 
-  <div class="masthead shell">
-    <a href="{{ '/' | relative_url }}" class="masthead__logo" aria-label="Telafi ana sayfa">telâfi</a>
-    <div class="masthead__domain">telafi<span>.org</span></div>
-    <p class="masthead__tagline">İhmal edilmiş ne varsa.</p>
+  <div class="shell">
+    <div class="masthead-frame">
+      <a href="{{ '/' | relative_url }}" class="brand">telâfi</a>
+      <p class="tagline">İhmal edilmiş ne varsa.</p>
+      <div class="brand-domain">telafi<span>.org</span></div>
+    </div>
   </div>
 
-  <nav class="main-nav" aria-label="Ana menü">
-    <div class="shell main-nav__inner">
-      <a href="{{ '/' | relative_url }}">Ana Sayfa</a>
-      <a href="{{ '/yazilar/' | relative_url }}">Yazılar</a>
-      <a href="{{ '/dosyalar/' | relative_url }}">Dosyalar</a>
-      <a href="{{ '/arsiv/' | relative_url }}">Arşiv</a>
-      <a href="{{ '/hakkinda/' | relative_url }}">Telafi Nedir?</a>
-    </div>
+  <nav class="main-nav shell" aria-label="Ana menü">
+    <a href="{{ '/' | relative_url }}">Ana Sayfa</a>
+    <a href="{{ '/yazilar/' | relative_url }}">Yazılar</a>
+    <a href="{{ '/dosyalar/' | relative_url }}">Dosyalar</a>
+    <a href="{{ '/arsiv/' | relative_url }}">Arşiv</a>
+    <a href="{{ '/hakkinda/' | relative_url }}">Telafi Nedir?</a>
+    <a href="{{ '/yeni-yazi/' | relative_url }}">Yeni Yazı</a>
   </nav>
 </header>

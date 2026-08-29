@@ -1,29 +1,31 @@
 ---
 layout: default
 title: Arşiv
-description: Telafi'de yayımlanan her şey, tarihe göre.
+description: Telafi arşivi.
 ---
 
-<section class="page-hero shell">
-  <p class="kicker">ARŞİV</p>
-  <h1>Arşiv</h1>
-</section>
+<section class="shell page-shell">
+  <div class="page-frame">
+    <p class="kicker">ARŞİV</p>
+    <h1>Arşiv</h1>
+    <p class="page-deck">Yayımlanan bütün içerikler tarihe göre burada görünür.</p>
+  </div>
 
-<section class="archive shell">
-  {% assign current_year = "" %}
-  {% for post in site.posts %}
-    {% assign year = post.date | date: "%Y" %}
-    {% if year != current_year %}
-      {% unless forloop.first %}</div>{% endunless %}
-      <div class="archive-year">
-        <h2>{{ year }}</h2>
-      {% assign current_year = year %}
+  <div class="content-frame">
+    {% if site.posts.size > 0 %}
+      <div class="archive-list">
+        {% for post in site.posts %}
+          <a class="archive-row" href="{{ post.url | relative_url }}">
+            <span>{{ post.date | date: "%d.%m.%Y" }}</span>
+            <strong>{{ post.title }}</strong>
+            <em>{{ post.category }}</em>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-frame empty-frame--inner">
+        <p>Arşiv henüz boş.</p>
+      </div>
     {% endif %}
-      <a class="archive-row" href="{{ post.url | relative_url }}">
-        <span>{{ post.date | date: "%d %b" }}</span>
-        <strong>{{ post.title }}</strong>
-        <em>{{ post.category }}</em>
-      </a>
-  {% endfor %}
-  {% if site.posts.size > 0 %}</div>{% endif %}
+  </div>
 </section>

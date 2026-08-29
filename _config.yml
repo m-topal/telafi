@@ -21,6 +21,4 @@ defaults:
 
 exclude:
   - README.md
-  - YENI-YAZI-EKLEME.md
-  - Gemfile
-  - Gemfile.lock
+  - YAZI-EKLEME.md

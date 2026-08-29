@@ -2,13 +2,11 @@
 layout: page
 title: İletişim
 kicker: TELAFİ
-description: Yazı, öneri ve iletişim için.
+description: İletişim ve yazı önerileri.
 ---
 
-Genel iletişim ve yazı önerileri için:
+Genel iletişim için:
 
 **merhaba@telafi.org**
 
-Bir yazı gönderecekseniz kısa bir tanıtım, yazının başlığı ve yaklaşık uzunluğuyla birlikte iletebilirsiniz.
-
-X: **@telafi_org**
+Yazı göndermek istiyorsan başlık, kısa özet ve metni bu adrese iletebilirsin.

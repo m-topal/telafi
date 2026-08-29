@@ -1,34 +1,26 @@
 <footer class="site-footer">
-  <div class="shell footer-grid">
-    <section>
-      <h2>Kategoriler</h2>
-      <ul>
-        <li><a href="{{ '/yazilar/#dusunce' | relative_url }}">Düşünce</a></li>
-        <li><a href="{{ '/yazilar/#tarih' | relative_url }}">Tarih</a></li>
-        <li><a href="{{ '/yazilar/#toplum' | relative_url }}">Toplum</a></li>
-        <li><a href="{{ '/yazilar/#edebiyat' | relative_url }}">Edebiyat</a></li>
-        <li><a href="{{ '/yazilar/#cevre' | relative_url }}">Çevre</a></li>
-      </ul>
-    </section>
-
-    <section>
+  <div class="shell footer-frame">
+    <div>
       <h2>Telafi</h2>
+      <p class="footer-logo">telâfi<span>.org</span></p>
+      <p class="footer-note">İhmal edilmiş ne varsa.</p>
+    </div>
+
+    <div>
+      <h2>Sayfalar</h2>
       <ul>
-        <li><a href="{{ '/hakkinda/' | relative_url }}">Hakkında</a></li>
-        <li><a href="{{ '/iletisim/' | relative_url }}">İletişim</a></li>
+        <li><a href="{{ '/yazilar/' | relative_url }}">Yazılar</a></li>
+        <li><a href="{{ '/dosyalar/' | relative_url }}">Dosyalar</a></li>
         <li><a href="{{ '/arsiv/' | relative_url }}">Arşiv</a></li>
-        <li><a href="{{ '/yeni-yazi/' | relative_url }}">Yeni Yazı Aracı</a></li>
       </ul>
-    </section>
+    </div>
 
-    <section class="footer-brand-block">
-      <div class="footer-logo">telâfi<span>.org</span></div>
-      <p>İhmal edilmiş ne varsa.</p>
-    </section>
-  </div>
-
-  <div class="shell footer-bottom">
-    <span>© {{ 'now' | date: "%Y" }} Telafi</span>
-    <span>telafi.org</span>
+    <div>
+      <h2>İletişim</h2>
+      <ul>
+        <li><a href="{{ '/iletisim/' | relative_url }}">İletişim sayfası</a></li>
+        <li><a href="mailto:merhaba@telafi.org">merhaba@telafi.org</a></li>
+      </ul>
+    </div>
   </div>
 </footer>

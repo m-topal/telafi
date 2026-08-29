@@ -1,23 +1,12 @@
-# TELAFİ — GitHub Pages / Jekyll
+# Telafi Clean Site
 
-Bu site GitHub Pages'in yerleşik Jekyll sistemiyle çalışır.
+Bu sürüm:
+- ortalı ve çerçeveli tasarım
+- sahte yazı / placeholder kart yok
+- boş ama çalışan yayın sistemi
+- GitHub Pages / Jekyll uyumlu
 
-## Site sayfaları
-- `/` Ana sayfa
-- `/yazilar/` Tüm yazılar + kategori filtresi
-- `/dosyalar/` Dosyalar
-- `/arsiv/` Arşiv
-- `/hakkinda/` Hakkında
-- `/iletisim/` İletişim
-- `/yeni-yazi/` Yeni yazı oluşturma aracı
-- Her yazı otomatik olarak `/yazi/yazi-adi/` adresinde açılır.
-
-## Yazı ekleme
-En kolay yol:
-1. `https://telafi.org/yeni-yazi/` sayfasını aç.
-2. Formu doldur.
-3. Markdown dosyasını indir.
-4. GitHub'da `_posts` klasörüne yükle.
-5. Commit changes.
-
-HTML/CSS değiştirmen gerekmez.
+Yeni yazı eklemek için:
+1. /yeni-yazi/ sayfasını aç
+2. formu doldur
+3. oluşan .md dosyasını GitHub'da _posts klasörüne yükle

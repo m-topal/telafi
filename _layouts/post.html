@@ -1,49 +1,16 @@
 ---
 layout: default
 ---
-<article class="article">
-  <header class="article-header shell">
+<section class="shell article-shell">
+  <article class="article-frame">
     <p class="kicker">{{ page.category }}</p>
     <h1>{{ page.title }}</h1>
-    {% if page.excerpt_text %}<p class="article-deck">{{ page.excerpt_text }}</p>{% endif %}
-    <div class="article-meta">
+    {% if page.excerpt_text %}<p class="page-deck">{{ page.excerpt_text }}</p>{% endif %}
+    <div class="meta-row">
       <span>{{ page.author }}</span>
       <span>{{ page.date | date: "%d.%m.%Y" }}</span>
       <span>{{ page.reading_time }}</span>
     </div>
-  </header>
-
-  {% if page.image %}
-  <figure class="article-hero shell">
-    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}">
-    {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
-  </figure>
-  {% endif %}
-
-  <div class="article-body shell">
-    <div class="article-share" aria-label="Yazı bilgisi">
-      <span>telafi.org</span>
-      <span>{{ page.category }}</span>
-    </div>
     <div class="prose">{{ content }}</div>
-  </div>
-
-  <footer class="article-end shell">
-    <span>•</span>
-    <p>İhmal edilmiş ne varsa.</p>
-    <span>•</span>
-  </footer>
-</article>
-
-<section class="more-posts shell">
-  <div class="section-heading">
-    <h2>Diğer Yazılar</h2>
-  </div>
-  <div class="card-grid card-grid--3">
-    {% for post in site.posts limit:3 %}
-      {% if post.url != page.url %}
-        {% include post-card.html post=post %}
-      {% endif %}
-    {% endfor %}
-  </div>
+  </article>
 </section>

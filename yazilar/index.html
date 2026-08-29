@@ -4,27 +4,23 @@ title: Yazılar
 description: Telafi'de yayımlanan bütün yazılar.
 ---
 
-<section class="page-hero shell">
-  <p class="kicker">TELAFİ</p>
-  <h1>Yazılar</h1>
-  <p class="page-deck">Yeni, uzun ve aceleye gelmemiş.</p>
-</section>
-
-<section class="listing shell">
-  <div class="filter-bar">
-    <button class="filter is-active" data-filter="all">Tümü</button>
-    <button class="filter" data-filter="düşünce">Düşünce</button>
-    <button class="filter" data-filter="tarih">Tarih</button>
-    <button class="filter" data-filter="toplum">Toplum</button>
-    <button class="filter" data-filter="edebiyat">Edebiyat</button>
-    <button class="filter" data-filter="çevre">Çevre</button>
+<section class="shell page-shell">
+  <div class="page-frame">
+    <p class="kicker">YAYIN</p>
+    <h1>Yazılar</h1>
+    <p class="page-deck">Yayımlanan bütün yazılar burada listelenir.</p>
   </div>
 
-  <div class="card-grid card-grid--3 js-filter-grid">
-    {% for post in site.posts %}
-      <div class="filter-item" data-category="{{ post.category | downcase }}">
+  {% if site.posts.size > 0 %}
+    <div class="post-grid post-grid--page">
+      {% for post in site.posts %}
         {% include post-card.html post=post %}
-      </div>
-    {% endfor %}
-  </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-frame">
+      <p>Henüz yazı eklenmedi.</p>
+      <p><a href="{{ '/yeni-yazi/' | relative_url }}">İlk yazıyı oluştur →</a></p>
+    </div>
+  {% endif %}
 </section>
