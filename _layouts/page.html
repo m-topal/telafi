@@ -1,14 +1,12 @@
 ---
 layout: default
 ---
-<section class="shell page-shell">
-  <div class="page-frame">
-    <p class="kicker">{{ page.kicker | default: "TELAFİ" }}</p>
-    <h1>{{ page.title }}</h1>
-    {% if page.description %}<p class="page-deck">{{ page.description }}</p>{% endif %}
-  </div>
+<header class="page-header shell">
+  <p class="kicker">{{ page.kicker | default: "TELAFİ" }}</p>
+  <h1>{{ page.title }}</h1>
+  {% if page.description %}<p class="page-deck">{{ page.description }}</p>{% endif %}
+</header>
 
-  <div class="content-frame prose">
-    {{ content }}
-  </div>
-</section>
+<div class="page-body shell prose">
+  {{ content }}
+</div>

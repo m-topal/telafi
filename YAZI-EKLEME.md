@@ -1,21 +1,13 @@
-# Yazı ekleme
+# Yeni yazı ekleme
 
-## Kolay yöntem
-`/yeni-yazi/` sayfasını aç ve formu doldur.
+1. `https://telafi.org/yeni-yazi/` sayfasını aç.
+2. Formu doldur.
+3. Markdown dosyasını indir.
+4. GitHub'da `_posts` klasörünü aç.
+5. Add file → Upload files.
+6. Markdown dosyasını yükle.
+7. Commit changes.
 
-## Manuel yöntem
-`_posts` klasörüne şu formatta dosya koy:
-
-```md
----
-title: "Yazı başlığı"
-date: 2026-08-28 12:00:00 -0700
-author: "Ad Soyad"
-category: "Yazı"
-reading_time: "6 dk"
-excerpt_text: "Kısa açıklama"
-featured: false
----
-
-Metin burada başlar.
-```
+Görsel kullanacaksan:
+1. Görseli `assets/images/` klasörüne yükle.
+2. Formdaki “Görsel yolu” alanına `/assets/images/dosya-adi.jpg` yaz.

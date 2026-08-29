@@ -4,6 +4,7 @@ url: "https://telafi.org"
 baseurl: ""
 lang: "tr"
 timezone: "America/Phoenix"
+
 permalink: /yazi/:title/
 markdown: kramdown
 future: true

@@ -2,55 +2,77 @@
 layout: default
 ---
 
-<section class="shell home-shell">
-  <div class="hero-frame">
-    {% if site.posts.size > 0 %}
-      {% assign featured_posts = site.posts | where: "featured", true %}
-      {% assign lead = featured_posts.first | default: site.posts.first %}
-      <p class="kicker">{{ lead.category }}</p>
-      <h1><a href="{{ lead.url | relative_url }}">{{ lead.title }}</a></h1>
-      {% if lead.excerpt_text %}<p class="hero-deck">{{ lead.excerpt_text }}</p>{% endif %}
-      <p class="meta">{{ lead.author }} · {{ lead.date | date: "%d.%m.%Y" }} · {{ lead.reading_time }}</p>
-    {% else %}
-      <p class="kicker">TELAFİ</p>
-      <h1>Henüz yayımlanmış bir yazı yok.</h1>
-      <p class="hero-deck">Site hazır. İlk yazını eklediğinde burada otomatik olarak görünecek.</p>
-      <p class="meta"><a href="{{ '/yeni-yazi/' | relative_url }}">İlk yazıyı ekle →</a></p>
+{% if site.posts.size > 0 %}
+  {% assign featured_posts = site.posts | where: "featured", true %}
+  {% assign lead = featured_posts.first %}
+  {% unless lead %}
+    {% assign lead = site.posts.first %}
+  {% endunless %}
+
+  {% if lead.image %}
+  <section class="visual-lead">
+    <a class="visual-lead__image" href="{{ lead.url | relative_url }}">
+      <img src="{{ lead.image | relative_url }}" alt="{{ lead.image_alt | default: '' }}">
+      <div class="visual-lead__shade"></div>
+      <div class="visual-lead__copy shell">
+        <p class="kicker kicker--light">{{ lead.category }}</p>
+        <h1>{{ lead.title }}</h1>
+        {% if lead.excerpt_text %}<p>{{ lead.excerpt_text }}</p>{% endif %}
+        <span class="meta meta--light">{{ lead.author }} · {{ lead.reading_time }}</span>
+      </div>
+    </a>
+  </section>
+  {% else %}
+  <section class="text-lead shell">
+    <p class="kicker">{{ lead.category }}</p>
+    <h1><a href="{{ lead.url | relative_url }}">{{ lead.title }}</a></h1>
+    {% if lead.excerpt_text %}<p class="text-lead__deck">{{ lead.excerpt_text }}</p>{% endif %}
+    <p class="meta">{{ lead.author }} · {{ lead.reading_time }}</p>
+  </section>
+  {% endif %}
+
+  {% assign secondary_count = 0 %}
+  {% for p in site.posts %}
+    {% if p.url != lead.url %}
+      {% assign secondary_count = secondary_count | plus: 1 %}
     {% endif %}
-  </div>
-</section>
+  {% endfor %}
 
-<section class="shell listing-shell">
-  <div class="section-head">
-    <h2>Son Yazılar</h2>
-    <a href="{{ '/yazilar/' | relative_url }}">Tümünü gör →</a>
-  </div>
-
-  {% if site.posts.size > 1 %}
-    <div class="post-grid">
-      {% assign count = 0 %}
-      {% for post in site.posts %}
-        {% if count < 4 %}
-          {% include post-card.html post=post %}
-          {% assign count = count | plus: 1 %}
+  {% if secondary_count > 0 %}
+  <section class="section shell">
+    <div class="section-title section-title--center">
+      <h2>Son Yazılar</h2>
+    </div>
+    <div class="story-grid story-grid--4">
+      {% assign shown = 0 %}
+      {% for p in site.posts %}
+        {% if p.url != lead.url and shown < 4 %}
+          {% include post-card.html post=p %}
+          {% assign shown = shown | plus: 1 %}
         {% endif %}
       {% endfor %}
     </div>
-  {% elsif site.posts.size == 1 %}
-    <div class="empty-frame">
-      <p>Şu anda yalnızca bir yazı yayımlandı. Yeni yazılar ekledikçe burası otomatik olarak dolacak.</p>
-    </div>
-  {% else %}
-    <div class="empty-frame">
-      <p>Burada sahte başlıklar ya da placeholder yazılar yok. Yazı eklediğinde bu alan gerçek içerikle dolacak.</p>
-    </div>
+  </section>
   {% endif %}
+{% endif %}
+
+<section class="identity shell">
+  <div class="identity__rule"></div>
+  <p class="kicker">TELAFİ</p>
+  <h2>İhmal edilmiş ne varsa.</h2>
+  <p>
+    Telafi, üzerinde fazla kolay mutabakata varılmış meseleleri yeniden açmak;
+    gözden kaçan hayatları, fikirleri ve soruları yeniden düşünmek için kurulmuş
+    bağımsız bir fikir yayınıdır.
+  </p>
+  <a href="{{ '/hakkinda/' | relative_url }}">Telafi nedir? →</a>
 </section>
 
-<section class="shell info-shell">
-  <div class="manifesto-frame">
-    <p class="kicker">TELAFİ NEDİR?</p>
-    <h2>İhmal edilmiş ne varsa.</h2>
-    <p>Telafi; yanlış sorulmuş sorulara yeniden dönmek, üzerinde fazla kolay mutabakata varılmış meseleleri yeniden açmak ve görünmezleşmiş tekil hayatları yeniden düşünmek için kuruldu.</p>
-  </div>
+<section class="category-band shell">
+  <span>Keşfet:</span>
+  <a href="{{ '/yazilar/?kategori=dusunce' | relative_url }}">Düşünce</a>
+  <a href="{{ '/yazilar/?kategori=tarih' | relative_url }}">Tarih</a>
+  <a href="{{ '/yazilar/?kategori=toplum' | relative_url }}">Toplum</a>
+  <a href="{{ '/yazilar/?kategori=edebiyat' | relative_url }}">Edebiyat</a>
+  <a href="{{ '/yazilar/?kategori=cevre' | relative_url }}">Çevre</a>
 </section>

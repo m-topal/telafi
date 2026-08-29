@@ -1,16 +1,54 @@
 ---
 layout: default
 ---
-<section class="shell article-shell">
-  <article class="article-frame">
+<article class="article">
+  <header class="article-header shell">
     <p class="kicker">{{ page.category }}</p>
     <h1>{{ page.title }}</h1>
-    {% if page.excerpt_text %}<p class="page-deck">{{ page.excerpt_text }}</p>{% endif %}
-    <div class="meta-row">
+    {% if page.excerpt_text %}<p class="article-deck">{{ page.excerpt_text }}</p>{% endif %}
+    <div class="article-meta">
       <span>{{ page.author }}</span>
       <span>{{ page.date | date: "%d.%m.%Y" }}</span>
       <span>{{ page.reading_time }}</span>
     </div>
-    <div class="prose">{{ content }}</div>
-  </article>
+  </header>
+
+  {% if page.image %}
+  <figure class="article-image shell">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}">
+    {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
+
+  <div class="article-body shell">
+    <div class="prose">
+      {{ content }}
+    </div>
+  </div>
+
+  <div class="article-signoff shell">İhmal edilmiş ne varsa.</div>
+</article>
+
+{% assign related_count = 0 %}
+{% for p in site.posts %}
+  {% if p.url != page.url %}
+    {% assign related_count = related_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+{% if related_count > 0 %}
+<section class="section shell">
+  <div class="section-title">
+    <h2>Diğer Yazılar</h2>
+  </div>
+  <div class="story-grid story-grid--3">
+    {% assign shown = 0 %}
+    {% for p in site.posts %}
+      {% if p.url != page.url and shown < 3 %}
+        {% include post-card.html post=p %}
+        {% assign shown = shown | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  </div>
 </section>
+{% endif %}

@@ -4,23 +4,30 @@ title: Yazılar
 description: Telafi'de yayımlanan bütün yazılar.
 ---
 
-<section class="shell page-shell">
-  <div class="page-frame">
-    <p class="kicker">YAYIN</p>
-    <h1>Yazılar</h1>
-    <p class="page-deck">Yayımlanan bütün yazılar burada listelenir.</p>
-  </div>
+<header class="page-header shell">
+  <p class="kicker">TELAFİ</p>
+  <h1>Yazılar</h1>
+</header>
 
+<section class="listing shell">
   {% if site.posts.size > 0 %}
-    <div class="post-grid post-grid--page">
+    <nav class="filters" aria-label="Yazı kategorileri">
+      <button class="filter is-active" data-filter="all">Tümü</button>
+      <button class="filter" data-filter="düşünce">Düşünce</button>
+      <button class="filter" data-filter="tarih">Tarih</button>
+      <button class="filter" data-filter="toplum">Toplum</button>
+      <button class="filter" data-filter="edebiyat">Edebiyat</button>
+      <button class="filter" data-filter="çevre">Çevre</button>
+    </nav>
+
+    <div class="story-grid story-grid--3 js-filter-grid">
       {% for post in site.posts %}
-        {% include post-card.html post=post %}
+        <div class="filter-item" data-category="{{ post.category | downcase }}">
+          {% include post-card.html post=post %}
+        </div>
       {% endfor %}
     </div>
   {% else %}
-    <div class="empty-frame">
-      <p>Henüz yazı eklenmedi.</p>
-      <p><a href="{{ '/yeni-yazi/' | relative_url }}">İlk yazıyı oluştur →</a></p>
-    </div>
+    <p class="empty-copy">Henüz yayımlanmış yazı yok.</p>
   {% endif %}
 </section>

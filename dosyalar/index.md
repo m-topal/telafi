@@ -2,9 +2,7 @@
 layout: page
 title: Dosyalar
 kicker: TELAFİ
-description: Tematik dosyalar için ayrılmış alan.
+description: Bir meseleyi tek yazıya bırakmamak için.
 ---
 
-Bu bölüm dosyalar için hazırlandı.
-
-İstersen burada uzun soluklu tematik başlıklar toplayabilirsin. Şimdilik sahte dosya listesi eklenmedi.
+Henüz yayımlanmış bir dosya yok.

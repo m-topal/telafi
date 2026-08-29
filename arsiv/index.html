@@ -1,31 +1,23 @@
 ---
 layout: default
 title: Arşiv
-description: Telafi arşivi.
 ---
 
-<section class="shell page-shell">
-  <div class="page-frame">
-    <p class="kicker">ARŞİV</p>
-    <h1>Arşiv</h1>
-    <p class="page-deck">Yayımlanan bütün içerikler tarihe göre burada görünür.</p>
-  </div>
+<header class="page-header shell">
+  <p class="kicker">TELAFİ</p>
+  <h1>Arşiv</h1>
+</header>
 
-  <div class="content-frame">
-    {% if site.posts.size > 0 %}
-      <div class="archive-list">
-        {% for post in site.posts %}
-          <a class="archive-row" href="{{ post.url | relative_url }}">
-            <span>{{ post.date | date: "%d.%m.%Y" }}</span>
-            <strong>{{ post.title }}</strong>
-            <em>{{ post.category }}</em>
-          </a>
-        {% endfor %}
-      </div>
-    {% else %}
-      <div class="empty-frame empty-frame--inner">
-        <p>Arşiv henüz boş.</p>
-      </div>
-    {% endif %}
-  </div>
+<section class="archive shell">
+{% if site.posts.size > 0 %}
+  {% for post in site.posts %}
+  <a class="archive-row" href="{{ post.url | relative_url }}">
+    <time>{{ post.date | date: "%d.%m.%Y" }}</time>
+    <strong>{{ post.title }}</strong>
+    <em>{{ post.category }}</em>
+  </a>
+  {% endfor %}
+{% else %}
+  <p class="empty-copy">Arşiv henüz boş.</p>
+{% endif %}
 </section>

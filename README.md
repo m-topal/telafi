@@ -1,12 +1,15 @@
-# Telafi Clean Site
+# TELAFİ — Editorial Site
 
 Bu sürüm:
-- ortalı ve çerçeveli tasarım
-- sahte yazı / placeholder kart yok
-- boş ama çalışan yayın sistemi
-- GitHub Pages / Jekyll uyumlu
+- tamamen beyaz zemin
+- kutu/kart çerçevesi yok
+- sadece ince editoryal ayırıcı çizgiler
+- sahte yazı yok
+- placeholder görsel yok
+- `_posts` klasörü boş
+- ilk gerçek yazı eklendiğinde ana sayfa otomatik oluşur
+- görseli olan yazı ana sayfada büyük görselli hero olabilir
+- görseli olmayan yazı tipografik hero olur
 
-Yeni yazı eklemek için:
-1. /yeni-yazi/ sayfasını aç
-2. formu doldur
-3. oluşan .md dosyasını GitHub'da _posts klasörüne yükle
+## Yeni yazı
+`/yeni-yazi/` sayfasından `.md` dosyası oluşturup `_posts` klasörüne yükleyin.
