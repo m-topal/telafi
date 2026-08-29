@@ -1,0 +1,76 @@
+---
+layout: default
+title: Editör
+---
+<section class="editor-page shell">
+  <header class="editor-header">
+    <p class="kicker">TELAFİ EDİTÖR</p>
+    <h1>Yeni yazı</h1>
+  </header>
+
+  <form id="postGenerator" class="editor-form">
+    <div class="editor-row">
+      <label>Başlık<input name="title" required></label>
+      <label>Yazar<input name="author" required></label>
+    </div>
+
+    <div class="editor-row">
+      <label>Kategori
+        <select name="category">
+          <option>Düşünce</option>
+          <option>Tarih</option>
+          <option>Toplum</option>
+          <option>Edebiyat</option>
+          <option>Çevre</option>
+          <option>Dosya</option>
+          <option>Yazı</option>
+        </select>
+      </label>
+      <label>Okuma süresi<input name="reading_time" value="6 dk"></label>
+    </div>
+
+    <label>Kısa açıklama<textarea name="excerpt_text" rows="3"></textarea></label>
+    <label>Görsel yolu<input name="image" placeholder="/assets/images/yazi.jpg"></label>
+    <label class="checkbox"><input type="checkbox" name="featured"> Ana sayfada öne çıkar</label>
+    <label>Yazı<textarea name="body" rows="22"></textarea></label>
+
+    <button type="submit">Yazı dosyasını oluştur</button>
+  </form>
+</section>
+
+<script>
+document.getElementById('postGenerator').addEventListener('submit', function(e){
+  e.preventDefault();
+  const fd = new FormData(this);
+  const title = String(fd.get('title') || '').trim();
+
+  const slug = title.toLocaleLowerCase('tr-TR')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/ı/g,'i').replace(/ğ/g,'g').replace(/ü/g,'u')
+    .replace(/ş/g,'s').replace(/ö/g,'o').replace(/ç/g,'c')
+    .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+
+  const date = new Date().toISOString().slice(0,10);
+  const esc = s => String(s || '').replace(/"/g,'\\"');
+
+  const lines = [
+    '---',
+    'title: "'+esc(title)+'"',
+    'date: '+date+' 12:00:00 -0700',
+    'author: "'+esc(fd.get('author'))+'"',
+    'category: "'+esc(fd.get('category'))+'"',
+    'reading_time: "'+esc(fd.get('reading_time'))+'"',
+    'excerpt_text: "'+esc(fd.get('excerpt_text'))+'"',
+    'featured: '+(fd.get('featured') ? 'true' : 'false')
+  ];
+  if(fd.get('image')) lines.push('image: "'+esc(fd.get('image'))+'"');
+  lines.push('---','',String(fd.get('body')||''),'');
+
+  const blob = new Blob([lines.join('\\n')], {type:'text/markdown;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = date+'-'+slug+'.md';
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+</script>

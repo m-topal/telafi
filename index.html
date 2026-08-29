@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-
 {% assign items = site.yazilar | sort: "date" | reverse %}
 
 {% if items.size > 0 %}
@@ -27,14 +26,11 @@ layout: default
   {% assign remaining = items.size | minus: 1 %}
   {% if remaining > 0 %}
   <section class="mix shell">
-    <header class="mix__header">
-      <h2>Son Yazılar</h2>
-    </header>
-
-    <div class="stories stories--4">
+    <header class="mix__header"><h2>Son Yazılar</h2></header>
+    <div class="stories stories--3">
       {% assign shown = 0 %}
       {% for item in items %}
-        {% if item.url != lead.url and shown < 4 %}
+        {% if item.url != lead.url and shown < 3 %}
           {% include story.html item=item %}
           {% assign shown = shown | plus: 1 %}
         {% endif %}
@@ -43,17 +39,17 @@ layout: default
   </section>
   {% endif %}
 {% else %}
-  <section class="empty-home shell">
-    <p class="kicker">TELAFİ</p>
-    <h1>İlk sayı hazırlanıyor.</h1>
-    <p>Telafi yakında burada.</p>
+  <section class="launch shell">
+    <p class="launch__eyebrow">TELAFİ</p>
+    <h1>İhmal edilmiş<br>ne varsa.</h1>
+    <p class="launch__deck">Bağımsız fikir yayını.</p>
   </section>
 {% endif %}
 
 <section class="identity shell">
   <div class="identity__top"></div>
   <p class="kicker">TELAFİ NEDİR?</p>
-  <h2>İhmal edilmiş ne varsa.</h2>
-  <p>Üzerinde fazla kolay mutabakata varılmış meseleleri yeniden açmak; gözden kaçan fikirleri, hayatları ve soruları yeniden düşünmek için kurulmuş bağımsız bir fikir yayını.</p>
+  <h2>Görülmemiş olana değil,<br>gözden kaçırılmış olana bakmak.</h2>
+  <p>Telafi; üzerinde fazla kolay mutabakata varılmış meseleleri yeniden açmak, tekil hayatları ve ihmal edilmiş soruları yeniden düşünmek için kurulmuş bağımsız bir fikir yayını.</p>
   <a href="{{ '/hakkinda/' | relative_url }}">Hakkımızda →</a>
 </section>
