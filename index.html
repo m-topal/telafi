@@ -2,77 +2,64 @@
 layout: default
 ---
 
-{% if site.posts.size > 0 %}
-  {% assign featured_posts = site.posts | where: "featured", true %}
-  {% assign lead = featured_posts.first %}
+{% assign items = site.yazilar | sort: "date" | reverse %}
+
+{% if items.size > 0 %}
+  {% assign featured = items | where: "featured", true %}
+  {% assign lead = featured.first %}
   {% unless lead %}
-    {% assign lead = site.posts.first %}
+    {% assign lead = items.first %}
   {% endunless %}
 
-  {% if lead.image %}
-  <section class="visual-lead">
-    <a class="visual-lead__image" href="{{ lead.url | relative_url }}">
-      <img src="{{ lead.image | relative_url }}" alt="{{ lead.image_alt | default: '' }}">
-      <div class="visual-lead__shade"></div>
-      <div class="visual-lead__copy shell">
-        <p class="kicker kicker--light">{{ lead.category }}</p>
-        <h1>{{ lead.title }}</h1>
-        {% if lead.excerpt_text %}<p>{{ lead.excerpt_text }}</p>{% endif %}
-        <span class="meta meta--light">{{ lead.author }} · {{ lead.reading_time }}</span>
-      </div>
-    </a>
-  </section>
-  {% else %}
-  <section class="text-lead shell">
-    <p class="kicker">{{ lead.category }}</p>
-    <h1><a href="{{ lead.url | relative_url }}">{{ lead.title }}</a></h1>
-    {% if lead.excerpt_text %}<p class="text-lead__deck">{{ lead.excerpt_text }}</p>{% endif %}
-    <p class="meta">{{ lead.author }} · {{ lead.reading_time }}</p>
-  </section>
-  {% endif %}
-
-  {% assign secondary_count = 0 %}
-  {% for p in site.posts %}
-    {% if p.url != lead.url %}
-      {% assign secondary_count = secondary_count | plus: 1 %}
-    {% endif %}
-  {% endfor %}
-
-  {% if secondary_count > 0 %}
-  <section class="section shell">
-    <div class="section-title section-title--center">
-      <h2>Son Yazılar</h2>
+  <section class="home-lead shell">
+    <div class="home-lead__copy">
+      <p class="kicker">{{ lead.category }}</p>
+      <h1><a href="{{ lead.url | relative_url }}">{{ lead.title }}</a></h1>
+      {% if lead.excerpt_text %}<p class="home-lead__deck">{{ lead.excerpt_text }}</p>{% endif %}
+      <p class="meta">{{ lead.author }} · {{ lead.reading_time }}</p>
     </div>
-    <div class="story-grid story-grid--4">
+
+    {% if lead.image %}
+      <a class="home-lead__image" href="{{ lead.url | relative_url }}">
+        <img src="{{ lead.image | relative_url }}" alt="{{ lead.image_alt | default: '' }}">
+      </a>
+    {% endif %}
+  </section>
+
+  {% assign other_count = items.size | minus: 1 %}
+  {% if other_count > 0 %}
+  <section class="section shell">
+    <div class="section-head">
+      <h2>Son Yazılar</h2>
+      <a href="{{ '/yazilar/' | relative_url }}">Tümünü gör →</a>
+    </div>
+
+    <div class="stories stories--4">
       {% assign shown = 0 %}
-      {% for p in site.posts %}
-        {% if p.url != lead.url and shown < 4 %}
-          {% include post-card.html post=p %}
+      {% for item in items %}
+        {% if item.url != lead.url and shown < 4 %}
+          {% include story.html item=item %}
           {% assign shown = shown | plus: 1 %}
         {% endif %}
       {% endfor %}
     </div>
   </section>
   {% endif %}
+{% else %}
+  <section class="home-empty shell">
+    <div class="home-empty__inner">
+      <p class="kicker">TELAFİ</p>
+      <h1>İlk yazı için hazır.</h1>
+      <p>Henüz yayımlanmış bir yazı yok.</p>
+      <a href="{{ '/yeni-yazi/' | relative_url }}">Yeni yazı oluştur →</a>
+    </div>
+  </section>
 {% endif %}
 
-<section class="identity shell">
-  <div class="identity__rule"></div>
-  <p class="kicker">TELAFİ</p>
+<section class="about-strip shell">
+  <div class="about-strip__rule"></div>
+  <p class="kicker">TELAFİ NEDİR?</p>
   <h2>İhmal edilmiş ne varsa.</h2>
-  <p>
-    Telafi, üzerinde fazla kolay mutabakata varılmış meseleleri yeniden açmak;
-    gözden kaçan hayatları, fikirleri ve soruları yeniden düşünmek için kurulmuş
-    bağımsız bir fikir yayınıdır.
-  </p>
-  <a href="{{ '/hakkinda/' | relative_url }}">Telafi nedir? →</a>
-</section>
-
-<section class="category-band shell">
-  <span>Keşfet:</span>
-  <a href="{{ '/yazilar/?kategori=dusunce' | relative_url }}">Düşünce</a>
-  <a href="{{ '/yazilar/?kategori=tarih' | relative_url }}">Tarih</a>
-  <a href="{{ '/yazilar/?kategori=toplum' | relative_url }}">Toplum</a>
-  <a href="{{ '/yazilar/?kategori=edebiyat' | relative_url }}">Edebiyat</a>
-  <a href="{{ '/yazilar/?kategori=cevre' | relative_url }}">Çevre</a>
+  <p>Telafi, üzerinde fazla kolay mutabakata varılmış meseleleri yeniden açmak; gözden kaçan fikirleri, hayatları ve soruları yeniden düşünmek için kurulmuş bağımsız bir fikir yayınıdır.</p>
+  <a href="{{ '/hakkinda/' | relative_url }}">Devamını oku →</a>
 </section>

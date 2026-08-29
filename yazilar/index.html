@@ -1,17 +1,18 @@
 ---
 layout: default
 title: Yazılar
-description: Telafi'de yayımlanan bütün yazılar.
 ---
 
-<header class="page-header shell">
-  <p class="kicker">TELAFİ</p>
-  <h1>Yazılar</h1>
-</header>
+{% assign items = site.yazilar | sort: "date" | reverse %}
 
-<section class="listing shell">
-  {% if site.posts.size > 0 %}
-    <nav class="filters" aria-label="Yazı kategorileri">
+<section class="page-shell shell">
+  <header class="page-header page-header--compact">
+    <p class="kicker">TELAFİ</p>
+    <h1>Yazılar</h1>
+  </header>
+
+  {% if items.size > 0 %}
+    <nav class="filters">
       <button class="filter is-active" data-filter="all">Tümü</button>
       <button class="filter" data-filter="düşünce">Düşünce</button>
       <button class="filter" data-filter="tarih">Tarih</button>
@@ -20,10 +21,10 @@ description: Telafi'de yayımlanan bütün yazılar.
       <button class="filter" data-filter="çevre">Çevre</button>
     </nav>
 
-    <div class="story-grid story-grid--3 js-filter-grid">
-      {% for post in site.posts %}
-        <div class="filter-item" data-category="{{ post.category | downcase }}">
-          {% include post-card.html post=post %}
+    <div class="stories stories--3 filter-grid">
+      {% for item in items %}
+        <div class="filter-item" data-category="{{ item.category | downcase }}">
+          {% include story.html item=item %}
         </div>
       {% endfor %}
     </div>

@@ -1,15 +1,10 @@
-# TELAFİ — Editorial Site
+# Telafi editorial v2
 
-Bu sürüm:
-- tamamen beyaz zemin
-- kutu/kart çerçevesi yok
-- sadece ince editoryal ayırıcı çizgiler
-- sahte yazı yok
-- placeholder görsel yok
-- `_posts` klasörü boş
-- ilk gerçek yazı eklendiğinde ana sayfa otomatik oluşur
-- görseli olan yazı ana sayfada büyük görselli hero olabilir
-- görseli olmayan yazı tipografik hero olur
+Önemli değişiklik:
+- Site artık `site.posts` / `_posts` kullanmıyor.
+- Yazılar `_yazilar` koleksiyonundan geliyor.
+- Repo'da eski `_posts` klasöründeki örnek yazılar kalsa bile sitede görünmez.
+- `_yazilar` başlangıçta tamamen boş.
+- Sayfa genişliği masaüstünde 1180px ile sınırlı ve otomatik ortalanıyor.
 
-## Yeni yazı
-`/yeni-yazi/` sayfasından `.md` dosyası oluşturup `_posts` klasörüne yükleyin.
+Yeni yazı: `/yeni-yazi/`

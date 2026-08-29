@@ -1,13 +1,9 @@
-# Yeni yazı ekleme
+# Yeni yazı
 
-1. `https://telafi.org/yeni-yazi/` sayfasını aç.
+1. `telafi.org/yeni-yazi/`
 2. Formu doldur.
-3. Markdown dosyasını indir.
-4. GitHub'da `_posts` klasörünü aç.
-5. Add file → Upload files.
-6. Markdown dosyasını yükle.
-7. Commit changes.
+3. Dosyayı indir.
+4. GitHub'da `_yazilar` klasörüne yükle.
+5. Commit changes.
 
-Görsel kullanacaksan:
-1. Görseli `assets/images/` klasörüne yükle.
-2. Formdaki “Görsel yolu” alanına `/assets/images/dosya-adi.jpg` yaz.
+Eski `_posts` klasörünü kullanma.

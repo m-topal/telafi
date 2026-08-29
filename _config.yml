@@ -4,15 +4,17 @@ url: "https://telafi.org"
 baseurl: ""
 lang: "tr"
 timezone: "America/Phoenix"
-
-permalink: /yazi/:title/
 markdown: kramdown
-future: true
+
+collections:
+  yazilar:
+    output: true
+    permalink: /yazi/:name/
 
 defaults:
   - scope:
       path: ""
-      type: "posts"
+      type: "yazilar"
     values:
       layout: "post"
       author: "Telafi"
@@ -23,3 +25,4 @@ defaults:
 exclude:
   - README.md
   - YAZI-EKLEME.md
+  - _posts

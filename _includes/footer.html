@@ -1,26 +1,23 @@
-<footer class="site-footer" id="site-footer">
-  <div class="shell footer-top">
+<footer class="site-footer">
+  <div class="shell footer-main">
     <div class="footer-brand">
-      <div class="footer-brand__name">telâfi<span>.org</span></div>
+      <div>telâfi<span>.org</span></div>
       <p>İhmal edilmiş ne varsa.</p>
     </div>
 
-    <div class="footer-group">
+    <nav class="footer-col">
       <h2>Kategoriler</h2>
-      <a href="{{ '/yazilar/?kategori=dusunce' | relative_url }}">Düşünce</a>
-      <a href="{{ '/yazilar/?kategori=tarih' | relative_url }}">Tarih</a>
-      <a href="{{ '/yazilar/?kategori=toplum' | relative_url }}">Toplum</a>
-      <a href="{{ '/yazilar/?kategori=edebiyat' | relative_url }}">Edebiyat</a>
-      <a href="{{ '/yazilar/?kategori=cevre' | relative_url }}">Çevre</a>
-    </div>
+      <a href="{{ '/yazilar/' | relative_url }}">Yazılar</a>
+      <a href="{{ '/dosyalar/' | relative_url }}">Dosyalar</a>
+      <a href="{{ '/arsiv/' | relative_url }}">Arşiv</a>
+    </nav>
 
-    <div class="footer-group">
+    <nav class="footer-col">
       <h2>Telafi</h2>
       <a href="{{ '/hakkinda/' | relative_url }}">Hakkında</a>
       <a href="{{ '/iletisim/' | relative_url }}">İletişim</a>
-      <a href="{{ '/arsiv/' | relative_url }}">Arşiv</a>
       <a href="{{ '/yeni-yazi/' | relative_url }}">Yeni Yazı</a>
-    </div>
+    </nav>
   </div>
 
   <div class="shell footer-bottom">

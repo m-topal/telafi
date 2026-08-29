@@ -3,57 +3,60 @@ layout: default
 title: Yeni Yazı
 ---
 
-<header class="page-header shell">
-  <p class="kicker">EDİTÖR ARACI</p>
-  <h1>Yeni yazı oluştur</h1>
-  <p class="page-deck">Formu doldur, dosyayı indir, GitHub'da <code>_posts</code> klasörüne yükle.</p>
-</header>
+<section class="page-shell shell">
+  <header class="page-header page-header--compact">
+    <p class="kicker">EDİTÖR ARACI</p>
+    <h1>Yeni yazı</h1>
+    <p class="page-deck">Formu doldur. Oluşan dosyayı GitHub'daki <code>_yazilar</code> klasörüne yükle.</p>
+  </header>
 
-<section class="editor shell">
-  <form id="postGenerator" class="editor-form">
-    <div class="editor-row">
-      <label>Başlık<input name="title" required></label>
-      <label>Yazar<input name="author" value="Telafi" required></label>
-    </div>
+  <div class="editor">
+    <form id="postGenerator" class="editor-form">
+      <div class="editor-row">
+        <label>Başlık<input name="title" required></label>
+        <label>Yazar<input name="author" value="Telafi" required></label>
+      </div>
 
-    <div class="editor-row">
-      <label>Kategori
-        <select name="category">
-          <option>Düşünce</option>
-          <option>Tarih</option>
-          <option>Toplum</option>
-          <option>Edebiyat</option>
-          <option>Çevre</option>
-          <option>Dosya</option>
-          <option>Yazı</option>
-        </select>
-      </label>
-      <label>Okuma süresi<input name="reading_time" value="6 dk"></label>
-    </div>
+      <div class="editor-row">
+        <label>Kategori
+          <select name="category">
+            <option>Düşünce</option>
+            <option>Tarih</option>
+            <option>Toplum</option>
+            <option>Edebiyat</option>
+            <option>Çevre</option>
+            <option>Dosya</option>
+            <option>Yazı</option>
+          </select>
+        </label>
+        <label>Okuma süresi<input name="reading_time" value="6 dk"></label>
+      </div>
 
-    <label>Kısa açıklama<textarea name="excerpt_text" rows="3"></textarea></label>
-    <label>Görsel yolu — opsiyonel<input name="image" placeholder="/assets/images/yazi-gorseli.jpg"></label>
-    <label class="checkbox"><input type="checkbox" name="featured"> Ana sayfada öne çıkar</label>
-    <label>Yazı<textarea name="body" rows="18"></textarea></label>
-    <button type="submit">Markdown dosyasını indir</button>
-  </form>
+      <label>Kısa açıklama<textarea name="excerpt_text" rows="3"></textarea></label>
+      <label>Görsel yolu — isteğe bağlı<input name="image" placeholder="/assets/images/yazi.jpg"></label>
+      <label class="checkbox"><input type="checkbox" name="featured"> Ana sayfada öne çıkar</label>
+      <label>Metin<textarea name="body" rows="18"></textarea></label>
 
-  <aside class="editor-help">
-    <h2>Yayımlama</h2>
-    <ol>
-      <li>Formu doldur.</li>
-      <li>Markdown dosyasını indir.</li>
-      <li>GitHub → <code>_posts</code>.</li>
-      <li>Dosyayı yükle.</li>
-      <li>Commit changes.</li>
-    </ol>
-    <p>Site ana sayfayı, Yazılar sayfasını ve Arşiv'i otomatik günceller.</p>
-  </aside>
+      <button type="submit">Dosyayı indir</button>
+    </form>
+
+    <aside class="editor-help">
+      <h2>Yayımlama</h2>
+      <ol>
+        <li>Formu doldur.</li>
+        <li>Dosyayı indir.</li>
+        <li>GitHub'da <code>_yazilar</code> klasörünü aç.</li>
+        <li>Dosyayı yükle.</li>
+        <li>Commit changes.</li>
+      </ol>
+    </aside>
+  </div>
 </section>
 
 <script>
 document.getElementById('postGenerator').addEventListener('submit', function(e){
   e.preventDefault();
+
   const fd = new FormData(this);
   const title = String(fd.get('title') || '').trim();
 
@@ -66,7 +69,7 @@ document.getElementById('postGenerator').addEventListener('submit', function(e){
   const date = new Date().toISOString().slice(0,10);
   const esc = s => String(s || '').replace(/"/g,'\\"');
 
-  const rows = [
+  const lines = [
     '---',
     'title: "' + esc(title) + '"',
     'date: ' + date + ' 12:00:00 -0700',
@@ -77,11 +80,11 @@ document.getElementById('postGenerator').addEventListener('submit', function(e){
     'featured: ' + (fd.get('featured') ? 'true' : 'false')
   ];
 
-  if (fd.get('image')) rows.push('image: "' + esc(fd.get('image')) + '"');
+  if (fd.get('image')) lines.push('image: "' + esc(fd.get('image')) + '"');
 
-  rows.push('---', '', String(fd.get('body') || ''), '');
+  lines.push('---', '', String(fd.get('body') || ''), '');
 
-  const blob = new Blob([rows.join('\n')], {type:'text/markdown;charset=utf-8'});
+  const blob = new Blob([lines.join('\n')], {type:'text/markdown;charset=utf-8'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = date + '-' + slug + '.md';

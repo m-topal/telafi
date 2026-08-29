@@ -20,35 +20,9 @@ layout: default
   </figure>
   {% endif %}
 
-  <div class="article-body shell">
-    <div class="prose">
-      {{ content }}
-    </div>
+  <div class="article-body shell prose">
+    {{ content }}
   </div>
 
-  <div class="article-signoff shell">İhmal edilmiş ne varsa.</div>
+  <div class="article-end shell">İhmal edilmiş ne varsa.</div>
 </article>
-
-{% assign related_count = 0 %}
-{% for p in site.posts %}
-  {% if p.url != page.url %}
-    {% assign related_count = related_count | plus: 1 %}
-  {% endif %}
-{% endfor %}
-
-{% if related_count > 0 %}
-<section class="section shell">
-  <div class="section-title">
-    <h2>Diğer Yazılar</h2>
-  </div>
-  <div class="story-grid story-grid--3">
-    {% assign shown = 0 %}
-    {% for p in site.posts %}
-      {% if p.url != page.url and shown < 3 %}
-        {% include post-card.html post=p %}
-        {% assign shown = shown | plus: 1 %}
-      {% endif %}
-    {% endfor %}
-  </div>
-</section>
-{% endif %}

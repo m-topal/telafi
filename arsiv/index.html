@@ -3,21 +3,25 @@ layout: default
 title: Arşiv
 ---
 
-<header class="page-header shell">
-  <p class="kicker">TELAFİ</p>
-  <h1>Arşiv</h1>
-</header>
+{% assign items = site.yazilar | sort: "date" | reverse %}
 
-<section class="archive shell">
-{% if site.posts.size > 0 %}
-  {% for post in site.posts %}
-  <a class="archive-row" href="{{ post.url | relative_url }}">
-    <time>{{ post.date | date: "%d.%m.%Y" }}</time>
-    <strong>{{ post.title }}</strong>
-    <em>{{ post.category }}</em>
-  </a>
-  {% endfor %}
-{% else %}
-  <p class="empty-copy">Arşiv henüz boş.</p>
-{% endif %}
+<section class="page-shell shell">
+  <header class="page-header page-header--compact">
+    <p class="kicker">TELAFİ</p>
+    <h1>Arşiv</h1>
+  </header>
+
+  {% if items.size > 0 %}
+    <div class="archive">
+      {% for item in items %}
+      <a class="archive-row" href="{{ item.url | relative_url }}">
+        <time>{{ item.date | date: "%d.%m.%Y" }}</time>
+        <strong>{{ item.title }}</strong>
+        <em>{{ item.category }}</em>
+      </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty-copy">Arşiv henüz boş.</p>
+  {% endif %}
 </section>
