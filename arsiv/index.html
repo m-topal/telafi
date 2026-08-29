@@ -1,0 +1,29 @@
+---
+layout: default
+title: Arşiv
+description: Telafi'de yayımlanan her şey, tarihe göre.
+---
+
+<section class="page-hero shell">
+  <p class="kicker">ARŞİV</p>
+  <h1>Arşiv</h1>
+</section>
+
+<section class="archive shell">
+  {% assign current_year = "" %}
+  {% for post in site.posts %}
+    {% assign year = post.date | date: "%Y" %}
+    {% if year != current_year %}
+      {% unless forloop.first %}</div>{% endunless %}
+      <div class="archive-year">
+        <h2>{{ year }}</h2>
+      {% assign current_year = year %}
+    {% endif %}
+      <a class="archive-row" href="{{ post.url | relative_url }}">
+        <span>{{ post.date | date: "%d %b" }}</span>
+        <strong>{{ post.title }}</strong>
+        <em>{{ post.category }}</em>
+      </a>
+  {% endfor %}
+  {% if site.posts.size > 0 %}</div>{% endif %}
+</section>

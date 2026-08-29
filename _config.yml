@@ -1,0 +1,26 @@
+title: "telâfi"
+description: "İhmal edilmiş ne varsa."
+url: "https://telafi.org"
+baseurl: ""
+lang: "tr"
+timezone: "America/Phoenix"
+permalink: /yazi/:title/
+markdown: kramdown
+future: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Telafi"
+      category: "Yazı"
+      reading_time: "6 dk"
+      featured: false
+
+exclude:
+  - README.md
+  - YENI-YAZI-EKLEME.md
+  - Gemfile
+  - Gemfile.lock

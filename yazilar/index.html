@@ -1,0 +1,30 @@
+---
+layout: default
+title: Yazılar
+description: Telafi'de yayımlanan bütün yazılar.
+---
+
+<section class="page-hero shell">
+  <p class="kicker">TELAFİ</p>
+  <h1>Yazılar</h1>
+  <p class="page-deck">Yeni, uzun ve aceleye gelmemiş.</p>
+</section>
+
+<section class="listing shell">
+  <div class="filter-bar">
+    <button class="filter is-active" data-filter="all">Tümü</button>
+    <button class="filter" data-filter="düşünce">Düşünce</button>
+    <button class="filter" data-filter="tarih">Tarih</button>
+    <button class="filter" data-filter="toplum">Toplum</button>
+    <button class="filter" data-filter="edebiyat">Edebiyat</button>
+    <button class="filter" data-filter="çevre">Çevre</button>
+  </div>
+
+  <div class="card-grid card-grid--3 js-filter-grid">
+    {% for post in site.posts %}
+      <div class="filter-item" data-category="{{ post.category | downcase }}">
+        {% include post-card.html post=post %}
+      </div>
+    {% endfor %}
+  </div>
+</section>

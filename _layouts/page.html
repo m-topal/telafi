@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<section class="page-hero shell">
+  <p class="kicker">{{ page.kicker | default: "TELAFİ" }}</p>
+  <h1>{{ page.title }}</h1>
+  {% if page.description %}<p class="page-deck">{{ page.description }}</p>{% endif %}
+</section>
+
+<section class="page-content shell prose">
+  {{ content }}
+</section>
