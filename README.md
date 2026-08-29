@@ -1,10 +1,19 @@
-# Telafi editorial v2
+# Telafi editorial v3
 
-Önemli değişiklik:
-- Site artık `site.posts` / `_posts` kullanmıyor.
-- Yazılar `_yazilar` koleksiyonundan geliyor.
-- Repo'da eski `_posts` klasöründeki örnek yazılar kalsa bile sitede görünmez.
-- `_yazilar` başlangıçta tamamen boş.
-- Sayfa genişliği masaüstünde 1180px ile sınırlı ve otomatik ortalanıyor.
+Public site:
+- /
+- /yazilar/
+- /dosyalar/
+- /arsiv/
+- /hakkinda/
+- /iletisim/
 
-Yeni yazı: `/yeni-yazi/`
+Editor:
+- /editor/
+
+Editor link is intentionally NOT shown in public navigation.
+
+Content collection:
+- _yazilar/
+
+Old _posts content is ignored.

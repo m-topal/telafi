@@ -7,32 +7,29 @@ layout: default
 {% if items.size > 0 %}
   {% assign featured = items | where: "featured", true %}
   {% assign lead = featured.first %}
-  {% unless lead %}
-    {% assign lead = items.first %}
-  {% endunless %}
+  {% unless lead %}{% assign lead = items.first %}{% endunless %}
 
-  <section class="home-lead shell">
-    <div class="home-lead__copy">
+  <section class="lead shell {% unless lead.image %}lead--text{% endunless %}">
+    {% if lead.image %}
+    <a class="lead__image" href="{{ lead.url | relative_url }}">
+      <img src="{{ lead.image | relative_url }}" alt="{{ lead.image_alt | default: '' }}">
+    </a>
+    {% endif %}
+
+    <div class="lead__copy">
       <p class="kicker">{{ lead.category }}</p>
       <h1><a href="{{ lead.url | relative_url }}">{{ lead.title }}</a></h1>
-      {% if lead.excerpt_text %}<p class="home-lead__deck">{{ lead.excerpt_text }}</p>{% endif %}
-      <p class="meta">{{ lead.author }} · {{ lead.reading_time }}</p>
+      {% if lead.excerpt_text %}<p class="lead__deck">{{ lead.excerpt_text }}</p>{% endif %}
+      <p class="lead__byline">Yazan <strong>{{ lead.author }}</strong></p>
     </div>
-
-    {% if lead.image %}
-      <a class="home-lead__image" href="{{ lead.url | relative_url }}">
-        <img src="{{ lead.image | relative_url }}" alt="{{ lead.image_alt | default: '' }}">
-      </a>
-    {% endif %}
   </section>
 
-  {% assign other_count = items.size | minus: 1 %}
-  {% if other_count > 0 %}
-  <section class="section shell">
-    <div class="section-head">
+  {% assign remaining = items.size | minus: 1 %}
+  {% if remaining > 0 %}
+  <section class="mix shell">
+    <header class="mix__header">
       <h2>Son Yazılar</h2>
-      <a href="{{ '/yazilar/' | relative_url }}">Tümünü gör →</a>
-    </div>
+    </header>
 
     <div class="stories stories--4">
       {% assign shown = 0 %}
@@ -46,20 +43,17 @@ layout: default
   </section>
   {% endif %}
 {% else %}
-  <section class="home-empty shell">
-    <div class="home-empty__inner">
-      <p class="kicker">TELAFİ</p>
-      <h1>İlk yazı için hazır.</h1>
-      <p>Henüz yayımlanmış bir yazı yok.</p>
-      <a href="{{ '/yeni-yazi/' | relative_url }}">Yeni yazı oluştur →</a>
-    </div>
+  <section class="empty-home shell">
+    <p class="kicker">TELAFİ</p>
+    <h1>İlk sayı hazırlanıyor.</h1>
+    <p>Telafi yakında burada.</p>
   </section>
 {% endif %}
 
-<section class="about-strip shell">
-  <div class="about-strip__rule"></div>
+<section class="identity shell">
+  <div class="identity__top"></div>
   <p class="kicker">TELAFİ NEDİR?</p>
   <h2>İhmal edilmiş ne varsa.</h2>
-  <p>Telafi, üzerinde fazla kolay mutabakata varılmış meseleleri yeniden açmak; gözden kaçan fikirleri, hayatları ve soruları yeniden düşünmek için kurulmuş bağımsız bir fikir yayınıdır.</p>
-  <a href="{{ '/hakkinda/' | relative_url }}">Devamını oku →</a>
+  <p>Üzerinde fazla kolay mutabakata varılmış meseleleri yeniden açmak; gözden kaçan fikirleri, hayatları ve soruları yeniden düşünmek için kurulmuş bağımsız bir fikir yayını.</p>
+  <a href="{{ '/hakkinda/' | relative_url }}">Hakkımızda →</a>
 </section>

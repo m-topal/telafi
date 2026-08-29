@@ -23,6 +23,6 @@ defaults:
       featured: false
 
 exclude:
+  - _posts
   - README.md
   - YAZI-EKLEME.md
-  - _posts

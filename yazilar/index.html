@@ -2,33 +2,32 @@
 layout: default
 title: Yazılar
 ---
-
 {% assign items = site.yazilar | sort: "date" | reverse %}
 
-<section class="page-shell shell">
-  <header class="page-header page-header--compact">
+<section class="page shell">
+  <header class="page-header page-header--listing">
     <p class="kicker">TELAFİ</p>
     <h1>Yazılar</h1>
   </header>
 
   {% if items.size > 0 %}
-    <nav class="filters">
-      <button class="filter is-active" data-filter="all">Tümü</button>
-      <button class="filter" data-filter="düşünce">Düşünce</button>
-      <button class="filter" data-filter="tarih">Tarih</button>
-      <button class="filter" data-filter="toplum">Toplum</button>
-      <button class="filter" data-filter="edebiyat">Edebiyat</button>
-      <button class="filter" data-filter="çevre">Çevre</button>
-    </nav>
+  <nav class="filters">
+    <button class="filter is-active" data-filter="all">Tümü</button>
+    <button class="filter" data-filter="düşünce">Düşünce</button>
+    <button class="filter" data-filter="tarih">Tarih</button>
+    <button class="filter" data-filter="toplum">Toplum</button>
+    <button class="filter" data-filter="edebiyat">Edebiyat</button>
+    <button class="filter" data-filter="çevre">Çevre</button>
+  </nav>
 
-    <div class="stories stories--3 filter-grid">
-      {% for item in items %}
-        <div class="filter-item" data-category="{{ item.category | downcase }}">
-          {% include story.html item=item %}
-        </div>
-      {% endfor %}
+  <div class="stories stories--3 stories--listing">
+    {% for item in items %}
+    <div class="filter-item" data-category="{{ item.category | downcase }}">
+      {% include story.html item=item %}
     </div>
+    {% endfor %}
+  </div>
   {% else %}
-    <p class="empty-copy">Henüz yayımlanmış yazı yok.</p>
+  <p class="empty-copy">Henüz yayımlanmış yazı yok.</p>
   {% endif %}
 </section>
